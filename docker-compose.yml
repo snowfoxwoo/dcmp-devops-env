@@ -1,0 +1,28 @@
+version: '2'
+
+services:
+  server1:
+    image: ubuntu_ssh:latest
+    networks:
+        devops_env:
+            ipv4_address: 172.10.0.1
+
+  server2:
+    image: ubuntu_ssh:latest
+    networks:
+        devops_env:
+            ipv4_address: 172.10.0.2
+
+  server3:
+    image: ubuntu_ssh:latest
+    networks:
+        devops_env:
+            ipv4_address: 172.10.0.3
+
+networks:
+    devops_env:
+        driver: bridge
+        ipam:
+            config:
+                - subnet: 172.10.0.0/16
+                  gateway: 172.10.0.254
